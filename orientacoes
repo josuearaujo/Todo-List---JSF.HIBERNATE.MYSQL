@@ -42,5 +42,9 @@ As Todos por fazer estarão na cor azul, as Todos feitas terão cor cinza claro.
 
 Ao passar o mouse sob uma Todo, um campo vermelho à esquerda, e ao colocar o mouse sob esse campo, aparecerá um X, indicando que ao clicar ali, a Todo será excluída.
 
+Abaixo da lista de todos há os botões de filtro, com as opções de visualizar todas as Todos, apenas as completas e apenas as ativas.
+
 Por último, foi implementado um botão para voltar a tela inicial de login, para que se possa acessar a TodoList vinculada à outro email.
+
+Na página inicial há também icones do facebook, linkedin e github, que estão associadas as minhas redes sociais.
 
