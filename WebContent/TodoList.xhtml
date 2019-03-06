@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Todo List</title>
+  	
+  	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"/>
+  	<h:outputStylesheet library="css" name="todos.css"/>
+  	<!-- <h:outputStylesheet library="css" name="fonts/fontawesome/css/all.css"/> -->
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
+  	<!-- <h:outputStylesheet library="css" name="fontRoboto.css"/> -->
+  	
+</h:head>
+<h:body>
+	#{app.loadList(1)}
+	<h:form id = "form">
+		<div id="container">
+			<h1>To-Do List <span id = "plus"><i class="fas fa-plus"></i></span> </h1>
+			<p:inputText id="inputTodo" value="#{app.textNewTodo}">
+				<f:passThroughAttribute name="placeholder" value="Add New Todo" />
+			</p:inputText>
+			<h:commandButton action="#{app.addNewTodo(1)}" style="display:none;" value="submit"/>
+			
+			<ul id="todoList">
+				<ui:repeat var="tempTodo" value="#{app.lista}"> 
+					<li>
+					<h:commandButton styleClass="remover removeButton" value = "X" type="submit" action="#{app.removeTodo(tempTodo, 1)}"/>
+					<h:commandButton styleClass = "#{(tempTodo.status eq 1) ? 'test1' : 'test2'}" value = "#{tempTodo.name}" action = "#{app.mudaStatus(tempTodo, 1)}"/>
+
+					<!-- <h:panelGroup style="visibility: #{(tempTodo.status gt 1) ? 'none' : 'line-through'}">#{tempTodo.name} </h:panelGroup> -->				
+					</li>
+				</ui:repeat>
+			</ul>
+			<h2>
+				<h:commandButton styleClass="mode" id="active" value="Active" type="submit" action="TodoListActive"/>
+				<h:commandButton styleClass="mode modeSelected" id="all" value="All" type="submit" action="TodoList"/>				
+				<h:commandButton styleClass="mode" id="completed" value="Completed" type="submit" action="TodoListCompleted"/>
+			</h2>
+			<p:commandLink action="home.xhtml"><h1 id ="loginPageLink">Back to login page!</h1> </p:commandLink>	
+		</div>
+	</h:form>
+
+	<h:outputScript library ="js" name = "lib/jquery-3.3.1.min.js" />
+  	<h:outputScript library ="js" name = "lib/brands.js" />
+  	<h:outputScript library ="js" name = "lib/solid.js" />
+  	<h:outputScript library ="js" name = "lib/fontawesome.js" />
+  	
+<h:outputScript library ="js" name = "todos.js"/>
+</h:body>
+
+</html>
+
+
+
+
