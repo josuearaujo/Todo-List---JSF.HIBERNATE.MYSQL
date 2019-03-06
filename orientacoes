@@ -1,0 +1,46 @@
+O projeto foi implementado por meio da IDE Eclipse. 
+
+As tecnologias utilizadas foram foram: JSF, Tomcat, Hibernate, JPA, Bootstrap 4 e Primefaces.
+
+Ou seja, foram implementados os itens A, B, C, F, G.
+
+Para rodar a apresentação em um ambiente local é necessário instalar o Tomcat (utilizei o Tomcat7), instalar o MySQL (utilizei a versão 5.7.25), Eclipse.
+
+Faz-se necessário criar um database que será utilizado pela aplicação.
+	Por exemplo:
+			- Abrir o mysql;
+			- CREATE DATABASE CREATE DATABASE IF NOT EXISTS todo;
+
+			Não é preciso criar uma tabela, a aplicação já faz isso.
+
+
+Feito isto, abra o eclipse e carregue o projeto.
+Antes de rodar a aplicação é preciso verificar se os dados de configuração do hibernate estão corretos. Para isso, abra o arquivo hibernate.cfg.xml que se encontra no caminho Java Resources > src.
+		
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/todo</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456</property>
+
+    Essas três linhas devem ser observadas:
+    1 - A url da conexão é definida da seguinte forma <endereco_da_conexao>:<porta>/<nome_do_database>.
+    2 - O usuário default é o root, mas pode ser alterado caso queira utilizar outro usuário com as devidas permissões.
+    3 - A senha do usuário escolhido.
+
+Tendo feito isso, rodar a aplicação no tomcat.
+
+O acesso à aplicação se dá pelo home.xhtml. Sendo assim, acesse a URL: http://localhost:8080/Todo/faces/home.xhtml. 
+		Obs: 8080 é a porta padrão, mas deve ser alterado de acordo com a porta escolhida para o Tomcat
+
+Para acessar a todolist é necessário colocar um email que será utilizado para gerar a sua "TodoList privada".
+Há um teste de validação para esse campo email, sendo assim, inserir um email no formato padrão "example@esig.com".
+
+Estando na TodoList, há um campo AddNewTodo que inicialmente encontra-se disponível, mas pode ser escondido apertando o ícone + no canto superior direito.
+
+Basta digitar uma Todo e apertar enter que ela será adicionada na lista.
+
+As Todos por fazer estarão na cor azul, as Todos feitas terão cor cinza claro.
+
+Ao passar o mouse sob uma Todo, um campo vermelho à esquerda, e ao colocar o mouse sob esse campo, aparecerá um X, indicando que ao clicar ali, a Todo será excluída.
+
+Por último, foi implementado um botão para voltar a tela inicial de login, para que se possa acessar a TodoList vinculada à outro email.
+
